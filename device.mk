@@ -69,10 +69,10 @@ PRODUCT_PACKAGES += \
 
   
 # Init
-PRODUCT_PACKAGES += \
-	fstab.qcom \
-	recovery.fstab \
-	init.recovery.qcom.rc 
+#PRODUCT_PACKAGES += \
+#	fstab.qcom \
+#	recovery.fstab \
+#	init.recovery.qcom.rc 
 
 #	init.m51.rc \
 #	init.m51nsxx.rc \
@@ -83,7 +83,10 @@ PRODUCT_PACKAGES += \
 #	init.samsung.bsp.rc \
 #	init.samsung.rc \
 #	init.target.rc \
-   
+
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
+
 # Keylayouts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/idc/uinput-fpc.idc:$(TARGET_COPY_OUT_SYSTEM)/usr/idc/uinput-fpc.idc \
@@ -117,3 +120,10 @@ PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 PRODUCT_PACKAGES += \
     charger_res_images \
     product_charger_res_images
+
+# Keymaster
+#PRODUCT_PACKAGES += \
+#    android.hardware.keymaster@4.0 \
+#    android.hardware.keymaster@4.0-service \
+#    android.hardware.keymaster@4.0-impl \
+#    libkeymaster4device
